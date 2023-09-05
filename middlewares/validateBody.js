@@ -1,4 +1,4 @@
-const errorMessage = require("../helpers/errorMessage.js");
+const { errorMessage } = require("../helpers");
 
 const validateBody = (schema) => {
   const validateFunction = (req, _, next) => {

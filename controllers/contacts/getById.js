@@ -1,11 +1,13 @@
 const contactsBook = require("../../models/contacts.js");
-const errorMessage = require("../../helpers/errorMessage.js");
+const { errorMessage } = require("../../helpers");
 
 const getById = async (req, res, next) => {
   const id = req.params.contactId;
 
   try {
-    const result = await contactsBook.findById(id).exec();
+    const result = await contactsBook
+      .findById(id, "-createdAt -updatedAt")
+      .exec();
     if (result === null) {
       throw errorMessage(404, "Not found");
     }

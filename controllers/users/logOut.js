@@ -1,5 +1,5 @@
 const users = require("../../models/users.js");
-const errorMessage = require("../../helpers/errorMessage.js");
+const { errorMessage } = require("../../helpers");
 
 const logOut = async (req, res, next) => {
   const { _id } = req.user;

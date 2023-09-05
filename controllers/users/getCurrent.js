@@ -1,5 +1,5 @@
 const users = require("../../models/users.js");
-const errorMessage = require("../../helpers/errorMessage.js");
+const { errorMessage } = require("../../helpers");
 
 const getCurrent = async (req, res, next) => {
   const { email } = req.user;

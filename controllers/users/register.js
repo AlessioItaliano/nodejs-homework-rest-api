@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const gravatar = require("gravatar");
 
 const users = require("../../models/users.js");
-const errorMessage = require("../../helpers/errorMessage.js");
+const { errorMessage } = require("../../helpers");
 
 const register = async (req, res, next) => {
   const { email, password } = req.body;
