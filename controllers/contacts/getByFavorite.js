@@ -1,5 +1,5 @@
 const contactsBook = require("../../models/contacts.js");
-const errorMessage = require("../../helpers/errorMessage.js");
+const { errorMessage } = require("../../helpers");
 
 const updateStatusContact = async (req, res, next) => {
   const id = req.params.contactId;

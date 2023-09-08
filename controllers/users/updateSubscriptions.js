@@ -1,5 +1,5 @@
 const users = require("../../models/users.js");
-const errorMessage = require("../../helpers/errorMessage.js");
+const { errorMessage } = require("../../helpers");
 
 const updateSubscriptions = async (req, res, next) => {
   const { subscription } = req.body;

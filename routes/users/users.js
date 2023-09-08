@@ -6,9 +6,10 @@ const {
   logOut,
   getCurrent,
   updateSubscriptions,
+  updateAvatar,
 } = require("../../controllers/users");
 
-const { validateBody, authenticate } = require("../../middlewares");
+const { validateBody, authenticate, upload } = require("../../middlewares");
 const {
   registerScheme,
   logInScheme,
@@ -24,6 +25,8 @@ router.post("/login", validateBody(logInScheme), logIn);
 router.post("/logout", authenticate, logOut);
 
 router.get("/current", authenticate, getCurrent);
+
+router.patch("/avatars", authenticate, upload.single("avatar"), updateAvatar);
 
 router.patch(
   "/",
