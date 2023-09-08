@@ -7,7 +7,7 @@ const avatarsDir = path.join(__dirname, "../", "../", "public", "avatars");
 
 const updateAvatar = async (req, res, next) => {
   if (!req.file) {
-    return res.status(401).json({ message: "Not authorized" });
+    return res.status(401).json({ message: "Unauthorized - File Not Found" });
   }
 
   const { path: tempUpload, originalname } = req.file;
