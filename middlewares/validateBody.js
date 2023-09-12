@@ -5,8 +5,14 @@ const validateBody = (schema) => {
     const { error } = schema.validate(req.body);
 
     if (req.method === "PATCH") {
-      if (Object.keys(req.body).length === 0) {
+      if (req.body.favorite === 0) {
         throw errorMessage(400, "missing field favorite");
+      }
+    }
+
+    if (req.method === "POST") {
+      if (req.body.email === 0) {
+        throw errorMessage(400, "missing required field email");
       }
     }
 

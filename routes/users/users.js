@@ -7,6 +7,8 @@ const {
   getCurrent,
   updateSubscriptions,
   updateAvatar,
+  verifyEmail,
+  resendVerifyEmail,
 } = require("../../controllers/users");
 
 const { validateBody, authenticate, upload } = require("../../middlewares");
@@ -14,6 +16,7 @@ const {
   registerScheme,
   logInScheme,
   updateSubscriptionSchema,
+  emailVerificationSchema,
 } = require("../../schemas/usersScheme.js");
 
 const router = express.Router();
@@ -34,5 +37,13 @@ router.patch(
   validateBody(updateSubscriptionSchema),
   updateSubscriptions
 );
+
+router.post(
+  "/verify",
+  validateBody(emailVerificationSchema),
+  resendVerifyEmail
+);
+
+router.get("/verify/:verificationToken", verifyEmail);
 
 module.exports = router;
