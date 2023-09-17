@@ -38,12 +38,12 @@ router.patch(
   updateSubscriptions
 );
 
+router.get("/verify/:verificationToken", verifyEmail);
+
 router.post(
   "/verify",
   validateBody(emailVerificationSchema),
   resendVerifyEmail
 );
-
-router.get("/verify/:verificationToken", verifyEmail);
 
 module.exports = router;

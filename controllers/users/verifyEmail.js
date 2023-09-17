@@ -10,7 +10,7 @@ const verifyEmail = async (req, res, next) => {
       throw errorMessage(404, "User not found");
     }
 
-    await user.findByIdAndUpdate(req.user._id, {
+    await users.findByIdAndUpdate(user._id, {
       verify: true,
       verificationToken: null,
     });
