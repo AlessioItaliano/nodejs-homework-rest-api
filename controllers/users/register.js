@@ -1,12 +1,12 @@
 require("dotenv").config();
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const gravatar = require("gravatar");
 const crypto = require("crypto");
 
 const users = require("../../models/users.js");
 const { errorMessage, sendEmail } = require("../../helpers");
 
-const { BASE_URL, PORT } = process.env;
+const { BASE_URL } = process.env;
 
 const register = async (req, res, next) => {
   const { email, password } = req.body;
