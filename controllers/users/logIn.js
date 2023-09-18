@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const users = require("../../models/users.js");
@@ -13,6 +13,10 @@ const logIn = async (req, res, next) => {
     const user = await users.findOne({ email }).exec();
     if (!user) {
       throw errorMessage(401, "Email or password is wrong");
+    }
+
+    if (!user.verify) {
+      throw errorMessage(404, "User not found");
     }
 
     const passwordCompare = await bcrypt.compare(password, user.password);
